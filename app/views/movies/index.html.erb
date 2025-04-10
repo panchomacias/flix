@@ -1,7 +1,13 @@
 <ul>
+  <div class="py-4">
+    <h1>Movies</h1>
+  </div>
+
   <% @movies.each do |movie| %>
     <li>
-      <%= movie %>
+      <strong><%= movie.title %></strong>
+      (<%= movie.rating %>):
+      <%= number_to_currency(movie.total_gross, precision: 0) %>
     </li>
   <% end %>
 </ul>
