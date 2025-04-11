@@ -1,17 +1,22 @@
-<ul>
-  <h1>Movies</h1>
-
-  <% @movies.each do |movie| %>
-    <li class="py-4">
-      <strong><%= movie.title %></strong>
-      (<%= movie.rating %>):
-      <%= total_gross(movie) %>
-      <p>
-        <%= truncate(movie.description, length: 40, separator: "") %>
-      </p>
-      <p>
-        <%= year_of(movie) %>
-      </p>
-    </li>
-  <% end %>
-</ul>
+<div class="flex justify-center items-center min-h-screen">
+  <div class="max-w-2xl w-full">
+    <ul class="p-6">
+      <% @movies.each do |movie| %>
+        <li class="flex items-center p-4 border-b border-gray-300 mb-4">
+          <%= image_tag "placeholder.png", class: "w-20 h-auto rounded" %>
+          <div class="ml-4 text-gray-500">
+            <strong><%= movie.title %></strong>
+            (<%= movie.rating %>):
+            <%= total_gross(movie) %>
+            <p>
+              <%= truncate(movie.description, length: 40, separator: "") %>
+            </p>
+            <p>
+              <%= year_of(movie) %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
