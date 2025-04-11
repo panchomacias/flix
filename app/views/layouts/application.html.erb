@@ -19,15 +19,13 @@
   </head>
 
   <body>
-    <header class="container mx-auto">
-      <h1>Flix</h1>
+    <header class="bg-cyan-600 p-4">
+      <%= image_tag "logo.png" %>
     </header>
 
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <%= yield %>
 
-    <footer>
+    <footer class="bg-gray-700 py-7 text-gray-300 p-4">
       <p>
         Copyright &copy;
         <%= Time.now.year %>
