@@ -1,0 +1,30 @@
+<div
+  class="
+    flex flex-col items-center py-12 px-4 space-y-8 text-center max-w-2xl mx-auto
+  "
+>
+  <div>
+    <%= image_tag "placeholder.png", class: "w-64 md:w-96 h-auto object-cover" %>
+  </div>
+  <div>
+    <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>
+  </div>
+  <div class="flex justify-center items-center space-x-6 py-2">
+    <span
+      class="
+        bg-blue-100 text-blue-800 font-medium px-3 py-1 rounded-full text-sm
+      "
+    >
+      <%= @movie.rating %>
+    </span>
+    <span class="text-gray-600 font-medium">
+      <%= year_of(@movie) %>
+    </span>
+    <span class="text-green-700 font-medium">
+      <%= total_gross(@movie) %>
+    </span>
+  </div>
+  <div>
+    <p class="text-gray-600"><%= @movie.description %></p>
+  </div>
+</div>

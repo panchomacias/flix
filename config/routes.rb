@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  root "movies#index"
   get "movies", to: "movies#index", as: :movies
+  get "movies/:id", to: "movies#show", as: :movie
 end
