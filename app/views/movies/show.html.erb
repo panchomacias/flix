@@ -27,4 +27,7 @@
   <div>
     <p class="text-gray-600"><%= @movie.description %></p>
   </div>
+  <div class="text-gray-400 self-start">
+    <%= link_to "Edit movie", edit_movie_path(@movie) %>
+  </div>
 </div>
