@@ -19,7 +19,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <p class="text-gray-600 leading-relaxed"><%= truncate(movie.description, length: 100, separator: " ") %></p>
+              <p class="text-gray-600 leading-relaxed"><%= truncate(movie.description.to_plain_text, length: 100, separator: " ") %></p>
             </div>
             <div class="text-sm text-gray-600">
               <p><%= total_gross(movie) %></p>

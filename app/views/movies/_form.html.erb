@@ -8,10 +8,9 @@
   </div>
   <div class="p-4">
     <%= f.label :description, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.text_area :description,
-                rows: 10,
-                class:
-                  "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.rich_text_area :description,
+                     class:
+                       "w-full h-64 border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
   </div>
   <div class="p-4">
     <%= f.label :rating, class: "block mb-2 font-medium text-gray-700" %>
