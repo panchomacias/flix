@@ -4,7 +4,7 @@
       <% @movies.each do |movie| %>
         <li class="flex items-start p-4 border-b border-gray-200 mb-4">
           <div class="flex-shrink-0">
-            <%= image_tag "placeholder.png", class: "w-20 h-auto rounded" %>
+            <%= image_tag movie.image_file_name, class: "w-20 h-auto rounded" %>
           </div>
           <div class="flex-grow ml-4">
             <div class="border-gray-200 pb-2 mb-2">
