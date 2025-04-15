@@ -4,7 +4,8 @@
   "
 >
   <div>
-    <%= image_tag "placeholder.png", class: "w-64 md:w-96 h-auto object-cover" %>
+    <%= image_tag @movie.image_file_name,
+    class: "w-64 md:w-96 h-auto object-cover rounded-lg" %>
   </div>
   <div>
     <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>

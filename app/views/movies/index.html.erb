@@ -4,7 +4,7 @@
       <% @movies.each do |movie| %>
         <li class="flex items-start p-4 border-b border-gray-200 mb-4">
           <div class="flex-shrink-0">
-            <%= image_tag "placeholder.png", class: "w-20 h-auto rounded" %>
+            <%= image_tag movie.image_file_name, class: "w-20 h-auto rounded" %>
           </div>
           <div class="flex-grow ml-4">
             <div class="border-gray-200 pb-2 mb-2">
@@ -19,7 +19,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <p class="text-gray-600 leading-relaxed"><%= truncate(movie.description, length: 100, separator: " ") %></p>
+              <p class="text-gray-600 leading-relaxed"><%= truncate(movie.description.to_plain_text, length: 100, separator: " ") %></p>
             </div>
             <div class="text-sm text-gray-600">
               <p><%= total_gross(movie) %></p>

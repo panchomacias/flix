@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  has_rich_text :description
+
   def self.released
     where("released_on < ?", Time.now).order(released_on: :desc)
   end
