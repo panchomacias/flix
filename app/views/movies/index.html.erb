@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center min-h-screen">
-  <div class="max-w-2xl w-full">
+  <div class="max-w-4xl w-full">
     <ul class="p-6">
       <% @movies.each do |movie| %>
         <li class="flex items-start p-4 border-b border-gray-200 mb-4">
@@ -19,7 +19,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <p class="text-gray-600 leading-relaxed"><%= truncate(movie.description.to_plain_text, length: 100, separator: " ") %></p>
+              <p class="text-gray-600 leading-relaxed"><%= truncate(movie.description.to_plain_text, length: 150, separator: " ") %></p>
             </div>
             <div class="text-sm text-gray-600">
               <p><%= total_gross(movie) %></p>
