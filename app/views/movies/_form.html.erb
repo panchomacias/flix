@@ -1,55 +1,53 @@
 <%= form_with(model: movie, class: "w-full max-w-2xl px-4") do |f| %>
+  <%= render "shared/errors", object: movie %>
+
+  <% input_classes =
+    "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+  <% label_classes = "block mb-2 font-medium text-gray-700" %>
+
   <div class="p-4">
-    <%= f.label :title, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.text_field :title,
-                 autofocus: true,
-                 class:
-                   "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :title, class: label_classes %>
+    <%= f.text_field :title, autofocus: true, class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :description, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.rich_text_area :description,
-                     class:
-                       "w-full h-64 border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :description, class: label_classes %>
+    <%= f.rich_text_area :description, class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :rating, class: "block mb-2 font-medium text-gray-700" %>
+    <%= f.label :rating, class: label_classes %>
     <%= f.select :rating,
              Movie::RATINGS,
              prompt: "Select a rating",
-             class:
-               "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+             class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :released_on, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.date_field :released_on,
-                 class:
-                   "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :released_on, class: label_classes %>
+    <%= f.date_field :released_on, class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :total_gross, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.number_field :total_gross,
-                   class:
-                     "w-full :border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :total_gross, class: label_classes %>
+    <%= f.number_field :total_gross, class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :director, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.text_field :director,
-                 class:
-                   "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :director, class: label_classes %>
+    <%= f.text_field :director, class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :duration, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.text_field :duration,
-                 class:
-                   "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :duration, class: label_classes %>
+    <%= f.text_field :duration, class: input_classes %>
   </div>
+
   <div class="p-4">
-    <%= f.label :image_file_name, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.text_field :image_file_name,
-                 class:
-                   "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.label :image_file_name, class: label_classes %>
+    <%= f.text_field :image_file_name, class: input_classes %>
   </div>
+
   <div class="p-4">
     <%= f.submit class:
                "px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2" %>
