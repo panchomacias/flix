@@ -14,9 +14,11 @@
   </div>
   <div class="p-4">
     <%= f.label :rating, class: "block mb-2 font-medium text-gray-700" %>
-    <%= f.text_field :rating,
-                 class:
-                   "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+    <%= f.select :rating,
+             Movie::RATINGS,
+             prompt: "Select a rating",
+             class:
+               "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
   </div>
   <div class="p-4">
     <%= f.label :released_on, class: "block mb-2 font-medium text-gray-700" %>
@@ -28,7 +30,7 @@
     <%= f.label :total_gross, class: "block mb-2 font-medium text-gray-700" %>
     <%= f.number_field :total_gross,
                    class:
-                     "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+                     "w-full :border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
   </div>
   <div class="p-4">
     <%= f.label :director, class: "block mb-2 font-medium text-gray-700" %>

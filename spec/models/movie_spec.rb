@@ -1,29 +1,46 @@
 require 'rails_helper'
 
 RSpec.describe Movie, type: :model do
-  describe "it should have valid attributes" do
-    it "should be valid with a title" do
-      movie = Movie.new(title: "Inception")
-      expect(movie.title).to eq("Inception")
-      expect(movie).to be_valid
+  describe "is should be invalid without correct validations" do
+    before do
+      @movie = Movie.new(title: nil, description: nil, released_on: nil, rating: nil, total_gross: -1, duration: nil, image_file_name: "test.txt")
     end
 
-    it "should be valid with a description" do
-      movie = Movie.new(description: "A mind-bending thriller")
-      expect(movie.description).to eq("A mind-bending thriller")
-      expect(movie).to be_valid
+    it "should be invalid without a title" do
+      expect(@movie).not_to be_valid
+      expect(@movie.errors[:title]).to include("can't be blank")
     end
 
-    it "should be valid with a release date" do
-      movie = Movie.new(released_on: (Date.today))
-      expect(movie.released_on).to eq(Date.today)
-      expect(movie).to be_valid
+    it "should be invalid without a released_on date" do
+      expect(@movie).not_to be_valid
+      expect(@movie.errors[:released_on]).to include("can't be blank")
     end
 
-    it "should be valid with a rating" do
-      movie = Movie.new(rating: "PG-13")
-      expect(movie.rating).to eq("PG-13")
-      expect(movie).to be_valid
+    it "should be invalid without a duration" do
+      expect(@movie).not_to be_valid
+      expect(@movie.errors[:duration]).to include("can't be blank")
+    end
+
+    it "should be invalid without a 25 length description" do
+      @movie.description = "Too short"
+      @movie.valid?
+      expect(@movie.errors[:description]).to include("is too short (minimum is 25 characters)")
+    end
+
+    it "should have a total_gross greater than or equal to 0" do
+      expect(@movie).not_to be_valid
+      expect(@movie.errors[:total_gross]).to include("must be greater than or equal to 0")
+    end
+
+    it "should have a valid image file name" do
+      expect(@movie).not_to be_valid
+      expect(@movie.errors[:image_file_name]).to include("must be a JPG or PNG image")
+    end
+
+    it "should have a valid rating" do
+      @movie.rating = "Invalid Rating"
+      @movie.valid?
+      expect(@movie.errors[:rating]).to include("is not included in the list")
     end
   end
 end
