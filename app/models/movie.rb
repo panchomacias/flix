@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  has_many :reviews, dependent: :destroy
+
   RATINGS = [ "G", "PG", "PG-13", "R", "NC-17" ]
 
   has_rich_text :description
