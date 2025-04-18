@@ -1,0 +1,22 @@
+<h1 class="text-center text-xl font-bold text-gray-600 mb-8">
+  Reviews for:
+  <%= link_to @movie.title,
+  movie_path(@movie),
+  class: "hover:underline hover:text-cyan-600" %>
+</h1>
+
+<div class="max-w-2xl mx-auto mt-6">
+  <ul>
+    <% @reviews.each do |review| %>
+      <li class="<%= cycle('bg-cyan-50', 'bg-white') %> py-4 px-3">
+        <div class="flex items-center gap-2 text-sm">
+          <span class="font-medium"><%= review.name %></span>
+          <span class="text-yellow-500">★</span><span><%= pluralize(review.stars, "star") %></span>
+          <span class="text-gray-500 ml-auto"><%= time_ago_in_words(review.created_at) %>
+            ago</span>
+        </div>
+        <p class="mt-1 text-gray-700"><%= review.comment %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
