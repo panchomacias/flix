@@ -7,9 +7,11 @@
     <%= image_tag @movie.image_file_name,
     class: "w-64 md:w-96 h-auto object-cover rounded-lg" %>
   </div>
+
   <div>
     <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>
   </div>
+
   <div class="flex justify-center items-center space-x-6 py-2">
     <span
       class="
@@ -25,8 +27,15 @@
       <%= total_gross(@movie) %>
     </span>
   </div>
+
   <div>
     <p class="text-gray-600"><%= @movie.description %></p>
+  </div>
+
+  <div>
+    <%= link_to pluralize(@movie.reviews.size, "review"),
+    movie_reviews_path(@movie),
+    class: "underline" %>
   </div>
 
   <div class="space-x-6 px-6 pb-6">
