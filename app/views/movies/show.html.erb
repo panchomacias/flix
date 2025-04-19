@@ -34,19 +34,6 @@
     <div class="mb-6">
       <%= render "movie_reviews" %>
     </div>
-
-    <div class="flex justify-center items-center gap-6 py-2">
-      <%= link_to pluralize(@movie.reviews.size, "review"),
-      movie_reviews_path(@movie),
-      class: "text-cyan-600 hover:text-cyan-800 underline font-medium" %>
-
-      <% if @reviews.empty? %>
-        <%= link_to "Write a review",
-        new_movie_review_path(@movie),
-        class:
-          "bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-white font-medium" %>
-      <% end %>
-    </div>
   </section>
 
   <div class="space-x-6">

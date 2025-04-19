@@ -1,6 +1,13 @@
 <h3 class="text-md font-bold text-gray-600 mb-4 text-center">Recent Reviews</h3>
 
 <div class="w-full">
+  <div class="flex items-center justify-center gap-3 py-2">
+    <div class="flex items-center">
+      <span class="text-cyan-600 font-medium"><%= average_stars(@movie) %></span>
+    </div>
+    <span class="text-gray-400">•</span>
+    <p class="text-cyan-600 font-medium underline"><%= pluralize(@movie.reviews.size, "review") %></p>
+  </div>
   <ul>
     <% @reviews.each do |review| %>
       <li class="<%= cycle('bg-cyan-50', 'bg-white') %> py-4 px-5 rounded-lg my-2">
@@ -14,4 +21,10 @@
       </li>
     <% end %>
   </ul>
+  <div class="flex justify-center items-center gap-6 py-2">
+    <%= link_to "Write a review",
+    new_movie_review_path(@movie),
+    class:
+      "bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-white font-medium" %>
+  </div>
 </div>
