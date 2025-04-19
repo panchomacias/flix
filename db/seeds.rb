@@ -178,3 +178,63 @@ Movie.create!([
     image_file_name: "wonder-woman.png"
   }
 ])
+
+puts "Seeding reviews..."
+
+
+Review.create!([
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Avengers: Endgame").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Captain Marvel").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Batman").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Spider-Man").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Batman").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Avengers: Endgame").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Avengers: Endgame").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Avengers: Endgame").id
+  },
+  {
+    name: 'Pancho Macias',
+    comment: "It was awesome! I loved it!",
+    stars: 4,
+    movie_id: Movie.find_by(title: "Avengers: Endgame").id
+  },
+  ])

@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   root "movies#index"
   resources :movies do
-    resources :reviews
+    resources :reviews, except: [ :index, :show, :edit, :update, :destroy ]
   end
 end
