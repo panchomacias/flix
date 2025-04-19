@@ -8,9 +8,7 @@
     class: "w-64 md:w-96 h-auto object-cover rounded-lg" %>
   </div>
 
-  <div>
-    <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>
-  </div>
+  <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>
 
   <div class="flex justify-center items-center space-x-6 py-2">
     <span
@@ -28,20 +26,33 @@
     </span>
   </div>
 
-  <div>
+  <div class="border-b border-cyan-300 py-4 w-full">
     <p class="text-gray-600"><%= @movie.description %></p>
   </div>
 
-  <div>
-    <%= link_to pluralize(@movie.reviews.size, "review"),
-    movie_reviews_path(@movie),
-    class: "underline" %>
-  </div>
+  <section class="w-full border-b border-cyan-300 py-4">
+    <div class="mb-6">
+      <%= render "movie_reviews" %>
+    </div>
 
-  <div class="space-x-6 px-6 pb-6">
+    <div class="flex justify-center items-center gap-6 py-2">
+      <%= link_to pluralize(@movie.reviews.size, "review"),
+      movie_reviews_path(@movie),
+      class: "text-cyan-600 hover:text-cyan-800 underline font-medium" %>
+
+      <% if @reviews.empty? %>
+        <%= link_to "Write a review",
+        new_movie_review_path(@movie),
+        class:
+          "bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-white font-medium" %>
+      <% end %>
+    </div>
+  </section>
+
+  <div class="space-x-6">
     <%= link_to "Edit movie",
     edit_movie_path(@movie),
-    class: "bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700" %>
+    class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
 
     <%= link_to "Delete movie",
     movie_path(@movie),
@@ -49,6 +60,6 @@
       turbo_method: :delete,
       turbo_confirm: "Are you sure?",
     },
-    class: "bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700" %>
+    class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
   </div>
 </div>

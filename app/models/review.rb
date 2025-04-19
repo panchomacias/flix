@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
   STARS = [ 1, 2, 3, 4, 5 ]
 
+  has_rich_text :comment
+
   belongs_to :movie
 
   validates :name, presence: true
