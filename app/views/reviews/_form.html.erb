@@ -1,0 +1,27 @@
+<%= form_with(model: [movie, review], class: "w-full max-w-2xl px-4") do |f| %>
+  <%= render "shared/errors", object: @review %>
+
+  <% input_classes =
+    "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
+  <% label_classes = "block mb-2 font-medium text-gray-700" %>
+
+  <div class="p-4">
+    <%= f.label :name, class: label_classes %>
+    <%= f.text_field :name, autofocus: true, class: input_classes %>
+  </div>
+
+  <div class="p-4">
+    <%= f.label :comment, class: label_classes %>
+    <%= f.rich_text_area :comment, class: input_classes %>
+  </div>
+
+  <div class="p-4">
+    <%= f.label :stars, class: label_classes %>
+    <%= f.select :stars, Review::STARS, prompt: "Pick one", class: input_classes %>
+  </div>
+
+  <div class="p-4">
+    <%= f.submit class:
+               "px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2" %>
+  </div>
+<% end %>

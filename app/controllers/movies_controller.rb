@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @reviews = @movie.reviews.order("created_at DESC")
   end
 
   def edit
@@ -40,6 +41,10 @@ class MoviesController < ApplicationController
   end
 
   private
+
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
   def movie_params
     params.require(:movie).permit(:title, :description, :released_on, :rating, :total_gross, :director, :duration, :image_file_name)
