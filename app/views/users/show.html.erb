@@ -1,0 +1,18 @@
+<div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="p-6 flex items-center space-x-4 border-b border-gray-200">
+    <div class="flex-shrink-0">
+      <%= profile_image(@user) %>
+    </div>
+    <div>
+      <h2 class="text-xl font-bold text-gray-800"><%= @user.name %></h2>
+      <p class="text-gray-600"><%= @user.email %></p>
+    </div>
+  </div>
+
+  <div class="p-6">
+    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Member since:</h3>
+    <p class="text-gray-700">
+      <%= @user.created_at.strftime("%B %d, %Y") %>
+    </p>
+  </div>
+</div>

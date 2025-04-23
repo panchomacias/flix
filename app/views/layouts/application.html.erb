@@ -20,13 +20,11 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-
-    <div class="py-4">
+    <div>
+      <%= render "layouts/header" %>
       <%= render "shared/notice" %>
       <%= yield %>
+      <%= render "layouts/footer" %>
     </div>
-
-    <%= render "layouts/footer" %>
   </body>
 </html>
