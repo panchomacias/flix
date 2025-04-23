@@ -1,7 +1,13 @@
 <header class="bg-cyan-600 p-4 border-b border-cyan-800">
-  <nav>
-    <%= link_to root_path do %>
-      <%= image_tag "logo.png" %>
-    <% end %>
-  </nav>
+  <div class="container mx-auto flex justify-between items-center">
+    <div>
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", class: "h-10" %>
+      <% end %>
+    </div>
+
+    <nav class="flex items-center space-x-6">
+      <%= link_to "Sign Up", signup_path, class: "text-white hover:text-cyan-200" %>
+    </nav>
+  </div>
 </header>
