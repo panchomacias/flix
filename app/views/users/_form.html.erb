@@ -4,6 +4,8 @@
   <% input_classes =
     "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
   <% label_classes = "block mb-2 font-medium text-gray-700" %>
+  <% submit_classes =
+    "px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2" %>
 
   <div class="p-4">
     <%= f.label :name, class: label_classes %>
@@ -26,7 +28,10 @@
   </div>
 
   <div class="p-4">
-    <%= f.submit class:
-               "px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2" %>
+    <% if user.new_record? %>
+      <%= f.submit "Create Account", class: submit_classes %>
+    <% else %>
+      <%= f.submit "Update Account", class: submit_classes %>
+    <% end %>
   </div>
 <% end %>
