@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   resources :users
   get "signup", to: "users#new", as: :signup
+
+  resource :session, only: [ :create, :destroy ]
+  get "signin", to: "sessions#new", as: :signin
 end
