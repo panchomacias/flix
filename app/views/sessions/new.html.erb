@@ -1,10 +1,10 @@
 <div class="flex flex-col items-center justify-center mx-auto pt-12">
-
   <div class="w-full max-w-2xl px-4 mb-6">
-    <h1 class="text-center text-lg font-bold text-gray-600">Sign In:
+    <h1 class="text-center text-lg font-bold text-gray-600">Sign up:
   </div>
 
-  <%= form_with(url: session_path, class: "w-full max-w-2xl px-4") do |f| %>
+  <%= form_with(url: session_path, class: "w-full max-w-xl px-4") do |f| %>
+
     <% input_classes =
       "w-full border px-3 py-3 rounded-lg border-gray-300 shadow-sm focus:outline-none focus:border-cyan-500 focus:ring focus:ring-cyan-500" %>
     <% label_classes = "block mb-2 font-medium text-gray-700" %>
@@ -13,12 +13,12 @@
 
     <div class="p-4">
       <%= f.label :email, class: label_classes %>
-      <%= f.email_field :email, class: input_classes, autofocus: true, required: true %>
+      <%= f.email_field :email, class: input_classes %>
     </div>
 
     <div class="p-4">
       <%= f.label :password, class: label_classes %>
-      <%= f.text_field :password, class: input_classes, required: true %>
+      <%= f.text_field :password, class: input_classes %>
     </div>
 
     <div class="p-4">
@@ -28,7 +28,8 @@
 
   <div class="p-4 text-center">
     <p class="text-gray-600 mb-2 text-sm">Don't have an Account?</p>
-    <%= link_to "Create account", signup_path, class: "text-cyan-600 hover:text-cyan-800 font-medium transition-colors" %>
+    <%= link_to "Create account",
+    signup_path,
+    class: "text-cyan-600 hover:text-cyan-800 font-medium transition-colors" %>
   </div>
 </div>
-
