@@ -5,22 +5,31 @@
         <%= image_tag "logo.png", class: "h-10" %>
       <% end %>
     </div>
-
-    <nav class="flex items-center space-x-6">
+    <nav class="flex items-center space-x-4">
       <% if current_user %>
         <%= link_to current_user.name,
         current_user,
-        class: "text-gray-200 px-4 py-2 rounded hover:underline" %>
-        <%= link_to "Account Settings",
-        edit_user_path(current_user),
-        class: "text-gray-200 px-4 py-2 rounded hover:underline" %>
+        class:
+          "text-white hover:text-cyan-300 px-4 py-2 rounded-lg transition-colors duration-200" %>
+
+        <%= link_to "Sign Out",
+        session_path,
+        class:
+          "bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200",
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?",
+        } %>
       <% else %>
         <%= link_to "Sign In",
         signin_path,
-        class: "bg-white text-cyan-600 px-4 py-2 rounded hover:bg-cyan-700" %>
+        class:
+          "text-white hover:text-cyan-300 border border-white hover:border-cyan-300 px-4 py-2 rounded-lg font-medium transition-all duration-200" %>
+
         <%= link_to "Sign Up",
         signup_path,
-        class: "bg-white text-cyan-600 px-4 py-2 rounded hover:bg-cyan-700" %>
+        class:
+          "bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200" %>
       <% end %>
     </nav>
   </div>
