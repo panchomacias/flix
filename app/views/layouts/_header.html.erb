@@ -7,12 +7,21 @@
     </div>
 
     <nav class="flex items-center space-x-6">
-      <%= link_to "Sign In",
-      signin_path,
-      class: "bg-white text-cyan-600 px-4 py-2 rounded hover:bg-cyan-700" %>
-      <%= link_to "Sign Up",
-      signup_path,
-      class: "bg-white text-cyan-600 px-4 py-2 rounded hover:bg-cyan-700" %>
+      <% if current_user %>
+        <%= link_to current_user.name,
+        current_user,
+        class: "text-gray-200 px-4 py-2 rounded hover:underline" %>
+        <%= link_to "Account Settings",
+        edit_user_path(current_user),
+        class: "text-gray-200 px-4 py-2 rounded hover:underline" %>
+      <% else %>
+        <%= link_to "Sign In",
+        signin_path,
+        class: "bg-white text-cyan-600 px-4 py-2 rounded hover:bg-cyan-700" %>
+        <%= link_to "Sign Up",
+        signup_path,
+        class: "bg-white text-cyan-600 px-4 py-2 rounded hover:bg-cyan-700" %>
+      <% end %>
     </nav>
   </div>
 </header>
