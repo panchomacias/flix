@@ -29,10 +29,12 @@
       <% end %>
     </ul>
 
-    <div class="px-6 pb-6">
-      <%= link_to "Add Movie",
-      new_movie_path,
-      class: "bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700" %>
-    </div>
+    <% if current_user_admin? %>
+      <div class="px-6 pb-6">
+        <%= link_to "Add Movie",
+        new_movie_path,
+        class: "bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700" %>
+      </div>
+    <% end %>
   </div>
 </div>

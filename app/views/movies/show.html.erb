@@ -36,17 +36,19 @@
     </div>
   </section>
 
-  <div class="space-x-6">
-    <%= link_to "Edit movie",
-    edit_movie_path(@movie),
-    class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
+  <% if current_user_admin? %>
+    <div class="space-x-6">
+      <%= link_to "Edit movie",
+      edit_movie_path(@movie),
+      class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
 
-    <%= link_to "Delete movie",
-    movie_path(@movie),
-    data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?",
-    },
-    class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
-  </div>
+      <%= link_to "Delete movie",
+      movie_path(@movie),
+      data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?",
+      },
+      class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
+    </div>
+  <% end %>
 </div>
