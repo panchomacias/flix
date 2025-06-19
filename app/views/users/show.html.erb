@@ -19,6 +19,25 @@
     <p><%= @user.admin? %></p>
   </div>
 
+  <% @grouped_reviews.each do |movie, reviews| %>
+    <div class="mb-8 border-t border-gray-200 pt-4">
+      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">
+        Reviews for
+        <%= movie.title %>:
+      </h3>
+
+      <% reviews.each do |review| %>
+        <div class="mb-4 pl-4 border-l-2 border-gray-100">
+          <p class="mb-2"><%= review.comment %></p>
+          <p class="text-sm text-gray-500 mb-1">Rating:
+            <%= review.stars %></p>
+          <p class="text-xs text-gray-400">Reviewed on:
+            <%= review.created_at.strftime("%B %d, %Y") %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="border-t border-gray-200 pt-4">
     <% if current_user?(@user) %>
       <%= link_to "Edit User",

@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :require_signin
+
   def index
     @movie = Movie.find(params[:movie_id])
     @reviews = @movie.reviews.all
@@ -12,6 +14,7 @@ class ReviewsController < ApplicationController
   def create
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.new(review_params)
+    @review.user = current_user
     if @review.save
       redirect_to movie_path(@movie), notice: "Review successfully created"
     else
@@ -27,6 +30,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:name, :comment, :stars, :movie_id)
+    params.require(:review).permit(:comment, :stars)
   end
 end

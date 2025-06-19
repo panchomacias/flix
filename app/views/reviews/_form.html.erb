@@ -6,11 +6,6 @@
   <% label_classes = "block mb-2 font-medium text-gray-700" %>
 
   <div class="p-4">
-    <%= f.label :name, class: label_classes %>
-    <%= f.text_field :name, autofocus: true, class: input_classes %>
-  </div>
-
-  <div class="p-4">
     <%= f.label :comment, class: label_classes %>
     <%= f.rich_text_area :comment, class: input_classes %>
   </div>
