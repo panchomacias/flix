@@ -3,6 +3,8 @@ class Movie < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
+  has_many :fans, through: :favorites, source: :user
+
   RATINGS = [ "G", "PG", "PG-13", "R", "NC-17" ]
 
   has_rich_text :description

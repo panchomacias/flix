@@ -1,0 +1,15 @@
+<div class="w-full border-b border-t border-cyan-300 py-4">
+  <% if @favorite_movies.present? %>
+    <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">
+      Favorite Movies:
+    </h4>
+    <div class="flex flex-wrap gap-3 justify-start">
+      <% @favorite_movies.each do |movie| %>
+        <%= link_to movie_path(movie), class: "block" do %>
+          <%= image_tag movie.image_file_name, 
+              class: "w-16 h-24 object-cover rounded border border-gray-200" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

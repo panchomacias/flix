@@ -19,6 +19,8 @@
     <p><%= @user.admin? %></p>
   </div>
 
+  <%= render "user_favorite_movies" %>
+
   <% @grouped_reviews.each do |movie, reviews| %>
     <div class="mb-8 border-t border-gray-200 pt-4">
       <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">
