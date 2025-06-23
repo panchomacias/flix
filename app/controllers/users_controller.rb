@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @reviews = @user.reviews.order(created_at: :desc)
     @grouped_reviews = @reviews.includes(:movie).group_by(&:movie)
+    @favorite_movies = @user.favorite_movies
   end
 
   def new

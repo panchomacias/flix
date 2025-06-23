@@ -9,6 +9,10 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews.order("created_at DESC")
+    @fans = @movie.fans.distinct
+    if current_user
+      @favorite = current_user.favorites.find_by(movie_id: @movie.id)
+    end
   end
 
   def edit

@@ -3,14 +3,35 @@
     flex flex-col items-center py-12 px-4 space-y-8 text-center max-w-2xl mx-auto
   "
 >
-  <div>
+  <% if @movie.image_file_name.present? %>
     <%= image_tag @movie.image_file_name,
-    class: "w-64 md:w-96 h-auto object-cover rounded-lg" %>
+    class: "w-32 md:w-48 h-auto object-cover rounded-lg" %>
+  <% end %>
+
+  <div class="flex items-center justify-center space-x-4 py-2">
+    <% if current_user %>
+      <% if @favorite %>
+        <%= button_to "Unfave",
+        movie_favorite_path(@movie, @favorite),
+        method: :delete,
+        class:
+          "bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-200 transition-colors duration-200 border border-gray-200" %>
+      <% else %>
+        <%= button_to "Favorite",
+        movie_favorites_path(@movie),
+        method: :post,
+        class:
+          "bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-200 transition-colors duration-200 border border-gray-200" %>
+      <% end %>
+    <% end %>
+    <div class="text-gray-500 text-sm">
+      <%= pluralize(@fans.count, "fan") %>
+    </div>
   </div>
 
   <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>
 
-  <div class="flex justify-center items-center space-x-6 py-2">
+  <div class="flex justify-center items-center space-x-6">
     <span
       class="
         bg-blue-100 text-blue-800 font-medium px-3 py-1 rounded-full text-sm
@@ -26,14 +47,12 @@
     </span>
   </div>
 
-  <div class="border-b border-cyan-300 py-4 w-full">
-    <p class="text-gray-600"><%= @movie.description %></p>
-  </div>
+  <p class="text-gray-600 w-full"><%= @movie.description %></p>
 
-  <section class="w-full border-b border-cyan-300 py-4">
-    <div class="mb-6">
-      <%= render "movie_reviews" %>
-    </div>
+  <%= render "movie_fans", movie: @movie %>
+
+  <section class="w-full py-4">
+    <%= render "movie_reviews", movie: @movie %>
   </section>
 
   <% if current_user_admin? %>
@@ -41,7 +60,6 @@
       <%= link_to "Edit movie",
       edit_movie_path(@movie),
       class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
-
       <%= link_to "Delete movie",
       movie_path(@movie),
       data: {
