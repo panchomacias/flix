@@ -1,72 +1,76 @@
-<div
-  class="
-    flex flex-col items-center py-12 px-4 space-y-8 text-center max-w-2xl mx-auto
-  "
->
-  <% if @movie.image_file_name.present? %>
-    <%= image_tag @movie.image_file_name,
-    class: "w-32 md:w-48 h-auto object-cover rounded-lg" %>
-  <% end %>
-
-  <div class="flex items-center justify-center space-x-4 py-2">
-    <% if current_user %>
-      <% if @favorite %>
-        <%= button_to "Unfave",
-        movie_favorite_path(@movie, @favorite),
-        method: :delete,
-        class:
-          "bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-200 transition-colors duration-200 border border-gray-200" %>
-      <% else %>
-        <%= button_to "Favorite",
-        movie_favorites_path(@movie),
-        method: :post,
-        class:
-          "bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-200 transition-colors duration-200 border border-gray-200" %>
-      <% end %>
+<div class="flex gap-8 py-12 px-4 max-w-6xl mx-auto">
+  <div class="flex-shrink-0">
+    <% if @movie.image_file_name.present? %>
+      <%= image_tag @movie.image_file_name,
+      class: "w-48 md:w-64 h-auto object-cover rounded-lg shadow-lg" %>
     <% end %>
-    <div class="text-gray-500 text-sm">
-      <%= pluralize(@fans.count, "fan") %>
-    </div>
   </div>
 
-  <h1 class="text-xl font-bold text-gray-600"><%= @movie.title %></h1>
+  <div class="flex-1 space-y-6">
+    <h1 class="text-3xl font-bold text-gray-800"><%= @movie.title %></h1>
 
-  <div class="flex justify-center items-center space-x-6">
-    <span
-      class="
-        bg-blue-100 text-blue-800 font-medium px-3 py-1 rounded-full text-sm
-      "
-    >
-      <%= @movie.rating %>
-    </span>
-    <span class="text-gray-600 font-medium">
-      <%= year_of(@movie) %>
-    </span>
-    <span class="text-green-700 font-medium">
-      <%= total_gross(@movie) %>
-    </span>
+    <div class="flex items-center space-x-6">
+      <span
+        class="
+          text-gray-800 font-medium border border-gray-300 px-3 py-1 rounded text-sm
+        "
+      >
+        <%= @movie.rating %>
+      </span>
+      <span class="text-gray-600 font-medium">
+        <%= year_of(@movie) %>
+      </span>
+      <span class="text-gray-800 font-medium">
+        <%= total_gross(@movie) %>
+      </span>
+    </div>
+
+    <p class="text-gray-600 leading-relaxed"><%= @movie.description %></p>
+
+    <section class="pt-4">
+      <%= render "movie_reviews", movie: @movie %>
+    </section>
+
+    <% if current_user_admin? %>
+      <div class="flex space-x-4 pt-6">
+        <%= link_to "Edit movie",
+        edit_movie_path(@movie),
+        class:
+          "text-gray-700 px-4 py-2 rounded border border-gray-300 hover:bg-gray-50 transition-colors duration-200" %>
+        <%= link_to "Delete movie",
+        movie_path(@movie),
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?",
+        },
+        class:
+          "text-red-700 px-4 py-2 rounded border border-red-300 hover:bg-red-50 transition-colors duration-200" %>
+      </div>
+    <% end %>
   </div>
 
-  <p class="text-gray-600 w-full"><%= @movie.description %></p>
+  <div class="flex-shrink-0 pt-2">
+    <div class="flex flex-col items-end space-y-3">
+      <% if current_user %>
+        <% if @favorite %>
+          <%= button_to "Unfave",
+          movie_favorite_path(@movie, @favorite),
+          method: :delete,
+          class:
+            "text-gray-700 px-4 py-2 rounded border border-gray-300 text-sm hover:bg-gray-50 transition-colors duration-200" %>
+        <% else %>
+          <%= button_to "Favorite",
+          movie_favorites_path(@movie),
+          method: :post,
+          class:
+            "text-gray-700 px-4 py-2 rounded border border-gray-300 text-sm hover:bg-gray-50 transition-colors duration-200" %>
+        <% end %>
+      <% end %>
 
-  <%= render "movie_fans", movie: @movie %>
-
-  <section class="w-full py-4">
-    <%= render "movie_reviews", movie: @movie %>
-  </section>
-
-  <% if current_user_admin? %>
-    <div class="space-x-6">
-      <%= link_to "Edit movie",
-      edit_movie_path(@movie),
-      class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
-      <%= link_to "Delete movie",
-      movie_path(@movie),
-      data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?",
-      },
-      class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
+      <div class="pt-4 mb-8 border-gray-200">
+        <%= render "movie_fans", movie: @movie %>
+        <%= render "movie_genres", movie: @movie %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>

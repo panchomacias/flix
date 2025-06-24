@@ -49,6 +49,21 @@
   </div>
 
   <div class="p-4">
+    <%= f.label :genre_ids, "Genres", class: label_classes %>
+    <div class="mt-2 space-y-2">
+      <%= f.collection_check_boxes(:genre_ids, Genre.order(:name), :id, :name) do |b| %>
+        <div class="flex items-center">
+          <%= b.check_box(
+            class:
+              "w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 rounded focus:ring-cyan-500 focus:ring-2",
+          ) %>
+          <%= b.label(class: "ml-2 text-sm font-medium text-gray-700 cursor-pointer") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="p-4">
     <%= f.submit class:
                "px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2" %>
   </div>
