@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   resource :session, only: [ :create, :destroy ]
   get "signin", to: "sessions#new", as: :signin
+
+  get "movies/filter/:filter", to: "movies#index", as: :movies_filter
 end
