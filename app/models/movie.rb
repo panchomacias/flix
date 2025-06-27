@@ -1,4 +1,7 @@
 class Movie < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_many :reviews, dependent: :destroy
 
   has_many :favorites, dependent: :destroy

@@ -101,6 +101,8 @@ GEM
     ffi (1.17.2-x86_64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
     ffi (1.17.2-x86_64-linux-musl)
+    friendly_id (5.5.1)
+      activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.7)
@@ -333,6 +335,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  friendly_id (~> 5.5)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
