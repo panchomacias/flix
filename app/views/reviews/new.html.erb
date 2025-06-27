@@ -6,5 +6,7 @@
       class: "underline text-xl text-cyan-500 hover:text-cyan-700" %></h1>
   </div>
 
-  <%= render "form", movie: @movie, review: @review %>
+  <%= turbo_frame_tag "review_#{@movie.id}" do %>
+    <%= render "form", movie: @movie, review: @review %>
+  <% end %>
 </div>

@@ -10,7 +10,7 @@
     <% @reviews.each do |review| %>
       <li class="<%= cycle('bg-cyan-50', 'bg-white') %> py-4 px-3">
         <div class="flex items-center gap-2 text-sm">
-          <span class="font-medium"><%= review.name %></span>
+          <span class="font-medium"><%= review.user.name %></span>
           <span class="text-yellow-500">★</span><span><%= pluralize(review.stars, "star") %></span>
           <span class="text-gray-500 ml-auto"><%= time_ago_in_words(review.created_at) %>
             ago</span>

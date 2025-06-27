@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.friendly.find(params[:id])
     @reviews = @movie.reviews.order("created_at DESC")
     @fans = @movie.fans.distinct
     @genres = @movie.genres.order(:name)
@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    @movie = Movie.friendly.new(movie_params)
     if @movie.save
       redirect_to movie_path(@movie), notice: "Movie was successfully created."
     else
